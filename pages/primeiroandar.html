@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="../imgs/ico/apple-touch-icon.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="../imgs/ico/favicon-32x32.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href="../imgs/ico/favicon-16x16.png"
+  />
+  <link rel="manifest" href="../imgs/ico/site.webmanifest" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <title>IFC Map</title>
+    <style>
+      #map {
+        width: 960px;
+        height: 540px;
+      }
+
+      .info-item {
+        display: none; /* Oculta todas as divs inicialmente */
+        display: flex; /* Alinha itens em uma linha */
+        flex-direction: row; /* Garante que os itens dentro da div estejam alinhados horizontalmente */
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      .info-item .image-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 0 0 200px; /* Largura fixa para a imagem */
+        margin-right: 20px; /* Espaçamento entre a imagem e o texto */
+        text-align: center;
+        padding: 50px;
+      }
+
+      .info-item .text {
+        flex: 1; /* O texto ocupará o espaço restante */
+      }
+
+      .info-item h3 {
+        margin: 0 0 10px 0; /* Margem inferior para o título */
+      }
+
+      .info-item p {
+        margin: 0; /* Remove a margem padrão do parágrafo */
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <img src="../imgs/logo/logo-preto.png" alt="IFC Logo" />
+        <button class="navbar-toggle" onclick="toggleMenu()">
+          <i class="fas fa-bars"></i> OPÇÕES
+        </button>
+        <div class="navbar-menu" id="navbarMenu">
+          <a href="../index.html">INÍCIO</a>
+          <a href="./terreo.html">TERREO</a>
+          <a href="./primeiroandar.html">1º ANDAR</a>
+          <a href="./segundoandar.html">2º ANDAR</a>
+          <a href="./externa.html">EXTERNA</a>
+          <a href="./blocodois.html">BLOCO 2</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="container single">
+      <div class="text">
+        <h1>CONHEÇA O PRIMEIRO ANDAR!</h1>
+        <p>Clique no pino no lugar do mapa onde deseja conhecer!</p>
+      </div>
+      <div id="map"></div>
+    </div>
+    <div id="info">
+      <!-- Início -->
+
+      <div id="direcao-ensino" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/primeiro_andar/cge.jpg" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>Direção de Ensino (CGE)</h3>
+            <p>
+              A <b>Coordenação Geral de Ensino (CGE)</b> tem como atribuição
+              principal, assessorar diretamente a Direção de Ensino no
+              planejamento, orientação, acompanhamento, implementação e
+              avaliação da proposta pedagógica da instituição, bem como agir de
+              forma que viabilize a operacionalização de atividades curriculares
+              dos diversos níveis, formas, graus e modalidades da Educação
+              Profissional Técnica e Tecnológica.
+              <br />
+              <br />
+
+              Coordenação Geral de Ensino (CGE):
+              <br />
+              Contato:
+              <a href="mailto:cge.fraiburgo@ifc.edu.br"
+                >cge.fraiburgo@ifc.edu.br</a
+              >
+              <br />
+              Telefone do setor:
+              <a href="tel:+550493202-8809 ">(49) 3202-8809</a> (WhatsApp)
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+
+      <!-- Início -->
+
+      <div id="sisae" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/primeiro_andar/sisae.jpg" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>
+              Serviço Integrado de Suporte e Acompanhamento Educacional (SISAE)
+            </h3>
+            <p>
+              o <b>SISAE</b> planeja e desenvolve atividades voltadas para o
+              atendimento exclusivo aos alunos, conduzindo-os e orientando-os
+              quando estes apresentam dificuldades que interferem em seu
+              desempenho acadêmico, proporcionando aos mesmos
+              condições e suporte
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+
+      <!-- Início -->
+
+      <div id="auditorio" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/primeiro_andar/auditorio centro.jpg" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>Auditório</h3>
+            <p>
+              Espaço dedicado a eventos, apresentações, conferências, palestras,
+              contar com uma estrutura de palco, cadeiras universitárias,
+              cadeiras e espaços dedicados para PCD.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+
+      <!-- Início -->
+
+      <div id="salas-aula" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/primeiro_andar/sala de aula.jpg" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>Salas de Aula</h3>
+            <p>
+              São espaços para o ensino e aprendizagem. São ambientes onde os
+              alunos têm a oportunidade de interagir com professores e colegas,
+              participar de discussões, realizar atividades práticas e
+              desenvolver habilidades acadêmicas.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+
+      <!-- Início -->
+
+      <div id="sala-musica" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/placeholder-568.png" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>Sala de Música</h3>
+            <p>
+              Espaços dedicados à prática, aprendizado da música e da dança
+              através da expressão dos movimentos corporal.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+
+      <!-- Início -->
+
+      <div id="refeitorio" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/primeiro_andar/refeitorio alunos.jfif" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>Refeitório</h3>
+            <p>
+              Espaço onde os estudantes se reúnem para fazer as refeições,
+              descansar e interagir com colegas. Local oferece mesas, cadeiras,
+              geladeiras, micro-ondas, sanduícheiras.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+
+      <!-- Início -->
+
+      <div id="laboratorio-ciencias" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/primeiro_andar/laboratorio.jpg" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>Laboratório de Ciências</h3>
+            <p>
+              Laboratório de biologia e química é um espaço dedicado à
+              realização de experimentos. É um ambiente equipado com
+              instrumentos especializados e materiais de laboratório necessários
+              para conduzir pesquisas, realizar testes biológicos e químicos.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+
+      <!-- Início -->
+
+      <div id="banheiros-pne" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/bloco_dois/banheiros acessivel.jfif" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>Banheiros para Pessoas com Necessidades Especiais (PNE)</h3>
+            <p>
+            Banheiro acessível é um espaço projetado para atender às necessidades de pessoas com deficiência ou mobilidade reduzida. Ele é pensado para garantir a inclusão e a independência de forma segura e confortável.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+
+      <!-- Início -->
+
+      <div id="sala-professores" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/primeiro_andar/professores.jpg" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>Elevador</h3>
+            <p>
+              Um dispositivo mecânico que é usado para transportar pessoas entre diferentes níveis de uma edificação.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+
+            <!-- Início -->
+
+            <div id="elevador" class="info-item">
+              <div class="container single">
+                <div class="image">
+                  <img src="../imgs/ifc/primeiro_andar/elevador.jpg" alt="[PENDENTE]" />
+                </div>
+                <div class="text">
+                  <h3>Elevador</h3>
+                  <p>
+                    Um dispositivo mecânico que é usado para transportar pessoas entre diferentes níveis de uma edificação.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Fim -->
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <img src="../imgs/logo/logo-branco.png" alt="IFC Logo" />
+      <p>Site criado por Victor Barroso Lino, Andressa Nunes, Keronlay Prigol</p>
+
+    </div>
+
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget("https://vlibras.gov.br/app");
+    </script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+      const map = L.map("map", {
+        crs: L.CRS.Simple,
+        minZoom: -1,
+        zoomControl: false, // Desabilita os controles de zoom
+        dragging: false, // Desabilita a movimentação do mapa
+        scrollWheelZoom: false, // Desabilita o zoom com a roda do mouse
+        doubleClickZoom: false, // Desabilita o zoom com duplo clique
+        touchZoom: false, // Desabilita o zoom por toque
+      });
+
+      const bounds = [
+        [0, 0],
+        [540, 960],
+      ];
+      const image = L.imageOverlay("../imgs/maps/bloco_1-1.png", bounds).addTo(
+        map
+      );
+
+      map.fitBounds(bounds);
+
+      const smallIcon = L.icon({
+        iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
+        iconSize: [16, 25],
+        iconAnchor: [8, 25],
+        popupAnchor: [0, -25],
+      });
+
+      const locations = [
+        { lat: 103.5, lng: 416.0, infoId: "direcao-ensino" },
+        { lat: 103.5, lng: 242.0, infoId: "sala-professores" },
+        { lat: 253.5, lng: 247.0, infoId: "salas-aula" },
+        { lat: 343.5, lng: 247.0, infoId: "sala-musica" },
+        { lat: 403.5, lng: 246.0, infoId: "refeitorio" },
+        { lat: 391.5, lng: 711.0, infoId: "laboratorio-ciencias" },
+        { lat: 253.5, lng: 711.0, infoId: "salas-aula" },
+        { lat: 317.5, lng: 478.0, infoId: "auditorio" },
+        { lat: 109.5, lng: 733.0, infoId: "banheiros-pne" },
+        { lat: 104.5, lng: 574.0, infoId: "sisae" },
+        { lat: 111.545, lng: 146.455, infoId: "elevador" },
+      ];
+
+      locations.forEach((location) => {
+        const marker = L.marker([location.lat, location.lng], {
+          icon: smallIcon,
+        }).addTo(map);
+        marker.on("click", () => {
+          document.querySelectorAll(".info-item").forEach((item) => {
+            item.style.display = "none";
+          });
+          const infoDiv = document.getElementById(location.infoId);
+          infoDiv.style.display = "flex";
+          infoDiv.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+
+      function setMapDraggable(map) {
+            if (window.innerWidth >= 768) {
+                map.dragging.disable();
+            } else {
+                map.dragging.enable();
+            }
+        }
+
+        setMapDraggable(map);
+
+        window.addEventListener('resize', function() {
+            setMapDraggable(map);
+        });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".info-item").forEach((item) => {
+          item.style.display = "none";
+        });
+      });
+    </script>
+    <script>
+      function toggleMenu() {
+        var navbarMenu = document.getElementById("navbarMenu");
+        navbarMenu.classList.toggle("active");
+      }
+    </script>
+  
+  </body>
+</html>

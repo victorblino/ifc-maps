@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="imgs/ico/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="imgs/ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="imgs/ico/favicon-16x16.png">
+    <link rel="manifest" href="imgs/ico/site.webmanifest">
+    <title>IFC Map</title>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <img src="imgs/logo/logo-preto.png" alt="IFC Logo">
+            <button class="navbar-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i> OPÇÕES
+            </button>
+            <div class="navbar-menu" id="navbarMenu">
+                <a href="./index.html">INÍCIO</a>
+                <a href="./pages/terreo.html">TERREO</a>
+                <a href="./pages/primeiroandar.html">1º ANDAR</a>
+                <a href="./pages/segundoandar.html">2º ANDAR</a>
+                <a href="./pages/externa.html">EXTERNA</a>
+                <a href="./pages/blocodois.html">BLOCO 2</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container single">
+        <div class="text">
+            <h1>CONHEÇA O IFC MAP!</h1>
+            <p>Website acessível para o IFC – Campus Fraiburgo que atenda às necessidades de todos os usuários, incluindo pessoas com deficiência.</p>
+            <br>
+            <h3>Você pode acessar as áreas do IFC navegando pelas áreas no TOPO do site!</h3>
+        </div>
+        <div class="image">
+            <img src="imgs/ifc/terreo/exterior_entrada.jpg" alt="[PENDENTE]">
+        </div>
+    </div>
+
+    <div class="footer">
+        <img src="imgs/logo/logo-branco.png" alt="IFC Logo">
+        <p>Site criado por Victor Barroso Lino, Andressa Nunes, Keronlay Prigol</p>
+    </div>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+      </div>    
+
+    <script src="js/script.js"></script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+</body>
+</html>

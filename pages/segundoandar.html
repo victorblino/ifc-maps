@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <link rel="stylesheet" href="../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../imgs/ico/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../imgs/ico/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../imgs/ico/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../imgs/ico/site.webmanifest" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <title>IFC Map</title>
+    <style>
+      #map {
+        width: 960px;
+        height: 540px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <img src="../imgs/logo/logo-preto.png" alt="IFC Logo" />
+        <button class="navbar-toggle" onclick="toggleMenu()">
+          <i class="fas fa-bars"></i> OPÇÕES
+        </button>
+        <div class="navbar-menu" id="navbarMenu">
+            <a href="../index.html">INÍCIO</a>
+            <a href="./terreo.html">TERREO</a>
+            <a href="./primeiroandar.html">1º ANDAR</a>
+            <a href="./segundoandar.html">2º ANDAR</a>
+            <a href="./externa.html">EXTERNA</a>
+            <a href="./blocodois.html">BLOCO 2</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="container single">
+      <div class="text">
+        <h1>CONHEÇA O SEGUNDO ANDAR!</h1>
+        <p>Clique no pino no lugar do mapa onde deseja conhecer!</p>
+      </div>
+      <div id="map"></div>
+    </div>
+    <div id="info">
+        
+      <!-- Início -->
+
+      <div id="lab-informatica-um" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/segundo_andar/labs.jpg" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>Laboratório de Informática 1</h3>
+            <p>
+              Destinado ao ensino e aprendizado dos alunos para a realização de
+              atividades práticas como hardware e software, alem de outros.
+              <br />
+              <br />
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+
+      <!-- Início -->
+
+      <div id="lab-informatica-dois" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/segundo_andar/labs.jpg" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>Laboratório de Informática 2</h3>
+            <p>
+              Destinado ao ensino e aprendizado dos alunos para a realização de
+              atividades práticas como hardware e software, alem de outros.
+              <br />
+              <br />
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+
+      <!-- Início -->
+
+      <div id="lab-clifc" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/segundo_andar/clifc.jpg" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>Laboratório de Centro de Línguas do IFC (CLIFC)</h3>
+            <p>
+              Esse espaço, conta computadores, para as aulas de Língua Espanhola
+              e Língua Inglesa.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+
+      <!-- Início -->
+
+      <div id="lab-hardware" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/segundo_andar/labs.jpg" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>Laboratório de Hardware</h3>
+            <p>Destinado ao ensino e aprendizado dos alunos para a realização de
+              atividades práticas como hardware e software, alem de outros.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+
+      <!-- Início -->
+
+      <div id="lab-informatica-tres" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/segundo_andar/labs.jpg" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>Laboratório de Informática 3</h3>
+            <p>
+              Destinado ao ensino e aprendizado dos alunos para a realização de
+              atividades práticas como hardware e software, alem de outros.
+              <br />
+              <br />
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+
+      <!-- Início -->
+
+      <div id="banheiros-pne" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/bloco_dois/banheiros acessivel.jfif" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>Banheiro para Pessoas com Necessidades Especiais (PNE)</h3>
+            <p>
+              Banheiro acessível é um espaço projetado para atender às necessidades de pessoas com deficiência ou mobilidade reduzida. Ele é pensado para garantir a inclusão e a independência de forma segura e confortável.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+
+      <!-- Início -->
+
+      <div id="elevador" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/primeiro_andar/elevador.jpg" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>Elevador</h3>
+            <p>
+              Um dispositivo mecânico que é usado para transportar pessoas entre diferentes níveis de uma edificação.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <img src="../imgs/logo/logo-branco.png" alt="IFC Logo" />
+      <p>Site criado por Victor Barroso Lino, Andressa Nunes, Keronlay Prigol</p>
+
+    </div>
+
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget("https://vlibras.gov.br/app");
+    </script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+      const map = L.map("map", {
+        crs: L.CRS.Simple,
+        minZoom: -1,
+        zoomControl: false, // Desabilita os controles de zoom
+        dragging: false, // Desabilita a movimentação do mapa
+        scrollWheelZoom: false, // Desabilita o zoom com a roda do mouse
+        doubleClickZoom: false, // Desabilita o zoom com duplo clique
+        touchZoom: false, // Desabilita o zoom por toque
+      });
+      map.invalidateSize();
+
+      const bounds = [
+        [0, 0],
+        [540, 960],
+      ];
+      const image = L.imageOverlay(
+        "../imgs/maps/segundo_andar.png",
+        bounds
+      ).addTo(map);
+
+      map.fitBounds(bounds);
+
+      const smallIcon = L.icon({
+        iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
+        iconSize: [16, 25],
+        iconAnchor: [8, 25],
+        popupAnchor: [0, -25],
+      });
+
+      const locations = [
+        { lat: 278, lng: 774.0, infoId: "banheiros-pne" },
+        { lat: 269.5, lng: 112.0, infoId: "lab-informatica-um" },
+        { lat: 269.5, lng: 259.0, infoId: "lab-informatica-dois" },
+        { lat: 269.5, lng: 395.0, infoId: "lab-clifc" },
+        { lat: 269.5, lng: 556.0, infoId: "lab-hardware" },
+        { lat: 269.5, lng: 692.0, infoId: "lab-informatica-tres" },
+        { lat: 283.545, lng: 51.818, infoId: "elevador" },
+      ];
+
+      locations.forEach((location) => {
+        const marker = L.marker([location.lat, location.lng], {
+          icon: smallIcon,
+        }).addTo(map);
+        marker.on("click", () => {
+          document.querySelectorAll(".info-item").forEach((item) => {
+            item.style.display = "none";
+          });
+          const infoDiv = document.getElementById(location.infoId);
+          infoDiv.style.display = "flex";
+          infoDiv.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+
+      function setMapDraggable(map) {
+            if (window.innerWidth >= 768) {
+                map.dragging.disable();
+            } else {
+                map.dragging.enable();
+            }
+        }
+
+        setMapDraggable(map);
+
+        window.addEventListener('resize', function() {
+            setMapDraggable(map);
+        });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".info-item").forEach((item) => {
+          item.style.display = "none";
+        });
+      });
+    </script>
+    <script>
+      function toggleMenu() {
+        var navbarMenu = document.getElementById("navbarMenu");
+        navbarMenu.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>

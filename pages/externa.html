@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <link rel="stylesheet" href="../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../imgs/ico/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../imgs/ico/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../imgs/ico/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../imgs/ico/site.webmanifest" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <title>IFC Map</title>
+    <style>
+      #map {
+        width: 960px;
+        height: 540px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <img src="../imgs/logo/logo-preto.png" alt="IFC Logo" />
+        <button class="navbar-toggle" onclick="toggleMenu()">
+          <i class="fas fa-bars"></i> OPÇÕES
+        </button>
+        <div class="navbar-menu" id="navbarMenu">
+            <a href="../index.html">INÍCIO</a>
+            <a href="./terreo.html">TERREO</a>
+            <a href="./primeiroandar.html">1º ANDAR</a>
+            <a href="./segundoandar.html">2º ANDAR</a>
+            <a href="./externa.html">EXTERNA</a>
+            <a href="./blocodois.html">BLOCO 2</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="container single">
+      <div class="text">
+        <h1>CONHEÇA A ÁREA EXTERNA!</h1>
+        <p>Clique no pino no lugar do mapa onde deseja conhecer!</p>
+      </div>
+      <div id="map"></div>
+    </div>
+    <div id="info">
+
+      <!-- Início -->
+
+      <div id="cantina" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/externa/cantina.jpg" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>Cantina</h3>
+            <p>Espaço onde as pessoas podem fazer suas refeições, geralmente, são oferecidas opções de pratos quentes, sanduíches, sucos, refrigerantes e sobremesas. Além de ser um local para alimentação, é um espaço onde é possível socializar, conversar e relaxar durante as pausas entre as aulas.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+
+      <!-- Início -->
+
+      <div id="quadra" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/externa/quadra.jpg" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>Quadra de Jogos</h3>
+            <p>
+                Local de jogos e  diversão ambiente para o desenvolvimento das habilidades motoras, fortalecimento dos laços sociais e o estímulo à prática de atividades físicas.
+              <br />
+              <br />
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+
+      <!-- Início -->
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <img src="../imgs/logo/logo-branco.png" alt="IFC Logo" />
+      <p>Site criado por Victor Barroso Lino, Andressa Nunes, Keronlay Prigol</p>
+    </div>
+
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget("https://vlibras.gov.br/app");
+    </script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+      const map = L.map("map", {
+        crs: L.CRS.Simple,
+        minZoom: -1,
+        zoomControl: false, // Desabilita os controles de zoom
+        dragging: false, // Desabilita a movimentação do mapa
+        scrollWheelZoom: false, // Desabilita o zoom com a roda do mouse
+        doubleClickZoom: false, // Desabilita o zoom com duplo clique
+        touchZoom: false, // Desabilita o zoom por toque
+      });
+      map.invalidateSize();
+
+      const bounds = [
+        [0, 0],
+        [540, 960],
+      ];
+      const image = L.imageOverlay("../imgs/maps/externa.png", bounds).addTo(
+        map
+      );
+
+      map.fitBounds(bounds);
+
+      const smallIcon = L.icon({
+        iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
+        iconSize: [16, 25],
+        iconAnchor: [8, 25],
+        popupAnchor: [0, -25],
+      });
+
+      const locations = [
+      { lat: 351.545, lng: 239.000, infoId: "cantina" },
+      { lat: 310.545, lng: 574.000, infoId: "quadra" },
+      ];
+
+      locations.forEach((location) => {
+        const marker = L.marker([location.lat, location.lng], {
+          icon: smallIcon,
+        }).addTo(map);
+        marker.on("click", () => {
+          document.querySelectorAll(".info-item").forEach((item) => {
+            item.style.display = "none";
+          });
+          const infoDiv = document.getElementById(location.infoId);
+          infoDiv.style.display = "flex";
+          infoDiv.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+
+      function setMapDraggable(map) {
+        if (window.innerWidth >= 768) {
+          map.dragging.disable();
+        } else {
+          map.dragging.enable();
+        }
+      }
+
+      setMapDraggable(map);
+
+      window.addEventListener("resize", function () {
+        setMapDraggable(map);
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".info-item").forEach((item) => {
+          item.style.display = "none";
+        });
+      });
+    </script>
+    <script>
+      function toggleMenu() {
+        var navbarMenu = document.getElementById("navbarMenu");
+        navbarMenu.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>

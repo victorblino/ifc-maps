@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../imgs/ico/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../imgs/ico/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../imgs/ico/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../imgs/ico/site.webmanifest" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <title>IFC Map</title>
+    <style>
+      #map {
+        width: 60rem;
+        height: 33.75rem;
+      }
+
+      @media (max-width: 768px) {
+            #map {
+                max-height: 45vh;
+                max-width: 45vh;
+            }
+        }
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <img src="../imgs/logo/logo-preto.png" alt="IFC Logo" />
+        <button class="navbar-toggle" onclick="toggleMenu()">
+          <i class="fas fa-bars"></i> OPÇÕES
+        </button>
+        <div class="navbar-menu" id="navbarMenu">
+          <a href="../index.html">INÍCIO</a>
+          <a href="./terreo.html">TERREO</a>
+          <a href="./primeiroandar.html">1º ANDAR</a>
+          <a href="./segundoandar.html">2º ANDAR</a>
+          <a href="./externa.html">EXTERNA</a>
+          <a href="./blocodois.html">BLOCO 2</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="container single">
+      <div class="text">
+        <h1>CONHEÇA O TÉRREO!</h1>
+        <p>Clique no pino no lugar do mapa onde deseja conhecer!</p>
+      </div>
+      <div id="map"></div>
+    </div>
+    <div id="info">
+      <!-- Início -->
+
+      <div id="salas-administrativas" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/terreo/sala_admins.jpg" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>Salas Administrativas</h3>
+            <p>
+              O <b>setor administrativo</b> do é responsável pela gestão e
+              organização das atividades administrativas. Ele engloba diversas
+              áreas, como recursos humanos, financeiro, compras, patrimônio,
+              tecnologia da informação, secretaria acadêmica, entre outras.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+
+      <!-- Início -->
+
+      <div id="copa" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/terreo/copa.jpg" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>Copa</h3>
+            <p>
+              <b>Copa</b> é um ambiente destinado para a atividade culinária,
+              equipado com fogão, geladeira, pia, armários e utensílios de
+              cozinha. A copa é um local onde as refeições são preparadas, e
+              muitas vezes também é utilizado para fazer as refeições.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+
+      <!-- Início -->
+
+      <div id="cpd" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/terreo/cpd.jpg" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>CPD</h3>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid
+              aut deleniti architecto a reiciendis, illum fugiat voluptatem
+              error quaerat perferendis quos ipsam distinctio sunt in quasi id
+              itaque non optio?
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+
+      <!-- Início -->
+
+      <div id="direção-geral" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/terreo/direcao.jpg" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>Direção Geral</h3>
+            <p>
+              A <b>Direção Geral</b> é responsável por coordenar e supervisionar
+              todas as atividades acadêmicas, administrativas e financeiras da
+              instituição. Ela trabalha em colaboração com os demais setores e
+              departamentos do instituto.
+
+              <br />
+              <br />
+              Horário de funcionamento: 08h-12h
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+
+      <!-- Início -->
+
+      <div id="secretaria" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/terreo/secretaria.jpg" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>Secretaria</h3>
+            <p>
+              A <b>Secretaria de Ensino</b> é responsável por coordenar e
+              acompanhar todas as atividades relacionadas ao ensino.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+
+      <!-- Início -->
+
+      <div id="coordenacoes" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/terreo/coordenacoes.jpg" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>Coordenações</h3>
+            <p>
+              A <b>Coordenação de Curso</b>: é coordenar e supervisionar todas
+              as atividades relacionadas ao curso. Isso inclui o planejamento e
+              desenvolvimento do projeto pedagógico, a definição de ementas e
+              conteúdos programáticos, a elaboração do cronograma de aulas,
+              acompanhamento do desempenho dos alunos. Além disso, a coordenação
+              de cursos também desempenha um papel importante na articulação com
+              outros setores e departamentos, como a coordenação de estágios, a
+              coordenação de pesquisa e extensão.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+
+      <!-- Início -->
+
+      <div id="banheiros-pne" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/bloco_dois/banheiros acessivel.jfif" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>Banheiros para Pessoas com Necessidades Especiais (PNE)</h3>
+            <p>
+              Banheiro acessível é um espaço projetado para atender às necessidades de pessoas com deficiência ou mobilidade reduzida. Ele é pensado para garantir a inclusão e a independência de forma segura e confortável.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+
+      <!-- Início -->
+
+      <div id="entrada" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/terreo/recepcao.jpg" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>Entrada/Recepção</h3>
+            <p>
+              A <b>recepção</b> é responsável por receber alunos, pais, funcionários e visitantes.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+
+      <!-- Início -->
+
+      <div id="elevador" class="info-item">
+        <div class="container single">
+          <div class="image">
+            <img src="../imgs/ifc/primeiro_andar/elevador.jpg" alt="[PENDENTE]" />
+          </div>
+          <div class="text">
+            <h3>Elevador</h3>
+            <p>
+            Um dispositivo mecânico que é usado para transportar pessoas entre diferentes níveis de uma edificação.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fim -->
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <img src="../imgs/logo/logo-branco.png" alt="IFC Logo" />
+      <p>Site criado por Victor Barroso Lino, Andressa Nunes, Keronlay Prigol</p>
+
+    </div>
+
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget("https://vlibras.gov.br/app");
+    </script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+      const map = L.map("map", {
+        crs: L.CRS.Simple,
+        minZoom: -1,
+        zoomControl: false, // Desabilita os controles de zoom
+        dragging: false, // Desabilita a movimentação do mapa
+        scrollWheelZoom: false, // Desabilita o zoom com a roda do mouse
+        doubleClickZoom: false, // Desabilita o zoom com duplo clique
+        touchZoom: false, // Desabilita o zoom por toque
+      });
+
+      const bounds = [
+        [0, 0],
+        [540, 960],
+      ];
+      const image = L.imageOverlay(
+        "../imgs/maps/bloco_terreo.png",
+        bounds
+      ).addTo(map);
+
+      map.fitBounds(bounds);
+
+      const smallIcon = L.icon({
+        iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
+        iconSize: [16, 25],
+        iconAnchor: [8, 25],
+        popupAnchor: [0, -25],
+      });
+
+      const locations = [
+        { lat: 456, lng: 298, infoId: "salas-administrativas" },
+        { lat: 391.5, lng: 241.5, infoId: "copa" },
+        { lat: 300, lng: 247, infoId: "banheiros-pne" },
+        { lat: 142.8, lng: 143.3, infoId: "cpd" },
+        { lat: 145, lng: 247, infoId: "direção-geral" },
+        { lat: 147, lng: 418, infoId: "secretaria" },
+        { lat: 54, lng: 550, infoId: "entrada" },
+        { lat: 147, lng: 626.4, infoId: "coordenacoes" },
+        { lat: 190.364, lng: 165.455, infoId: "elevador" },
+      ];
+
+      locations.forEach((location) => {
+        const marker = L.marker([location.lat, location.lng], {
+          icon: smallIcon,
+        }).addTo(map);
+        marker.on("click", () => {
+          document.querySelectorAll(".info-item").forEach((item) => {
+            item.style.display = "none";
+          });
+          const infoDiv = document.getElementById(location.infoId);
+          infoDiv.style.display = "flex";
+          infoDiv.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+
+      function setMapDraggable(map) {
+            if (window.innerWidth >= 768) {
+                map.dragging.disable();
+            } else {
+                map.dragging.enable();
+            }
+        }
+
+        setMapDraggable(map);
+
+        window.addEventListener('resize', function() {
+            setMapDraggable(map);
+        });
+
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".info-item").forEach((item) => {
+          item.style.display = "none";
+        });
+      });
+    </script>
+    <script>
+      function toggleMenu() {
+        var navbarMenu = document.getElementById("navbarMenu");
+        navbarMenu.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>

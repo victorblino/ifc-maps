@@ -1,0 +1,271 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+
+  .navbar img {
+    height: 50px;
+  }
+
+  .navbar-menu {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+  }
+
+  .navbar-menu a {
+    color: #333;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .navbar-menu a:hover {
+    color: #0eba05;
+  }
+
+  .navbar-menu a:first-child {
+    color: #006400;
+  }
+
+  .navbar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    align-items: center;
+    padding: 0;
+  }
+
+  .navbar-toggle i {
+    margin-right: 0.5em;
+  }
+
+  #map {
+    width: 100%;
+    height: 540px;
+  }
+
+  .info-item {
+    display: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .info-item .image-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 200px;
+    margin-right: 20px;
+    text-align: center;
+    padding: 50px;
+  }
+
+  .info-item .text {
+    flex: 1;
+  }
+
+  .info-item h3 {
+    margin: 0 0 10px 0;
+  }
+
+  .info-item p {
+    margin: 0;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+    flex: 1;
+  }
+
+  .container.single {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .text {
+    flex: 1;
+    padding-right: 10px;
+  }
+
+  .text h1 {
+    font-size: 1.5em;
+    color: #333;
+  }
+
+  .text p {
+    font-size: 1em;
+    color: #666;
+  }
+
+  .image {
+    flex: 1;
+    text-align: center;
+  }
+
+  .image img {
+    padding: inherit;
+    max-width: 93%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #006400;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  .footer img {
+    height: 40px;
+    margin-right: 25px;
+  }
+
+  .footer p {
+    margin: 0;
+  }
+
+  .btn {
+    background-color: #006400;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    text-align: center;
+    display: inline-block;
+  }
+
+  .btn:hover {
+    background-color: #004d00;
+    transform: scale(1.05);
+  }
+
+  .btn:active {
+    background-color: #003300;
+    transform: scale(0.95);
+  }
+
+  @media screen and (max-width: 1280px) {
+    .navbar-menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: #f8f8f8;
+      border-top: 1px solid #ddd;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+    }
+
+    .navbar-menu a {
+      padding: 10px 20px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .navbar-menu a:last-child {
+      border-bottom: none;
+    }
+
+    .navbar-menu.active {
+      display: flex;
+    }
+
+    .navbar-toggle {
+      display: flex;
+    }
+
+    .container {
+      flex-direction: column;
+    }
+
+    .image {
+      order: 2;
+      text-align: center;
+    }
+
+    #map {
+      height: 400px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .navbar-toggle {
+      font-size: 0.9em;
+    }
+
+    .text h1 {
+      font-size: 1.2em;
+    }
+
+    .text p {
+      font-size: 0.9em;
+    }
+
+    #map {
+      height: 300px;
+    }
+
+    .info-item .image-info {
+      flex: 0 0 150px;
+    }
+  }
+
+  @media screen and (max-width: 320px) {
+    .navbar-toggle {
+      font-size: 0.8em;
+    }
+
+    .text h1 {
+      font-size: 1em;
+    }
+
+    .text p {
+      font-size: 0.8em;
+    }
+
+    #map {
+      height: 200px;
+    }
+
+    .info-item .image-info {
+      flex: 0 0 100px;
+    }
+
+    .info-item .text {
+      font-size: 0.8em;
+    }
+  }
